@@ -36,8 +36,7 @@
 	</developers>
 
 	<properties>
-		<morphia.version>[0.111,)</morphia.version>
-		<mongo-java-driver.version>[3.0.1,]</mongo-java-driver.version>
+		<morphia.version>1.0.1</morphia.version>
 		<gwt.version>[2.5.0,)</gwt.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
@@ -48,13 +47,6 @@
 			<artifactId>morphia</artifactId>
 			<version>${morphia.version}</version>
 		</dependency>
-
-		<dependency>
-			<groupId>org.mongodb</groupId>
-			<artifactId>mongo-java-driver</artifactId>
-			<version>${mongo-java-driver.version}</version>
-		</dependency>
-
 		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-user</artifactId>

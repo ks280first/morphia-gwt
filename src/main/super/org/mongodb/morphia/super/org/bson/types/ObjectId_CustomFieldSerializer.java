@@ -39,7 +39,7 @@ public class ObjectId_CustomFieldSerializer {
 
     streamWriter.writeInt(instance.getTimestamp());
     streamWriter.writeInt(instance.getMachineIdentifier());
-    streamWriter.writeInt(instance.getProcessIdentifier());
+//    streamWriter.writeInt(instance.getProcessIdentifier());
     streamWriter.writeInt(instance.getCounter());
   }
 }
