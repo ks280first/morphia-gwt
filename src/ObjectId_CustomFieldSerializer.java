@@ -10,6 +10,7 @@ import com.google.gwt.user.client.rpc.SerializationStreamWriter;
  *
  */
 public class ObjectId_CustomFieldSerializer {
+  private static final Logger logger = Logger.getGlobal();
   /**
    * @param streamReader
    * @param instance
@@ -27,9 +28,10 @@ public class ObjectId_CustomFieldSerializer {
    */
   public static ObjectId instantiate(SerializationStreamReader streamReader)
       throws SerializationException {
+    logger.info("Instantiating ObjectId.......");
     int time = streamReader.readInt();
     int machine = streamReader.readInt();
-    Short inc = streamReader.readShort();
+    Integer inc = streamReader.readInt();
     int counter = streamReader.readInt();
 
     try{ 

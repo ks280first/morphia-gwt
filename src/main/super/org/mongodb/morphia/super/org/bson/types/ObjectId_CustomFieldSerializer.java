@@ -1,5 +1,7 @@
 package org.bson.types;
 
+import java.util.logging.Logger;
+
 import com.google.gwt.user.client.rpc.SerializationException;
 import com.google.gwt.user.client.rpc.SerializationStreamReader;
 import com.google.gwt.user.client.rpc.SerializationStreamWriter;
@@ -25,8 +27,17 @@ public class ObjectId_CustomFieldSerializer {
    */
   public static ObjectId instantiate(SerializationStreamReader streamReader)
       throws SerializationException {
-    return new ObjectId(streamReader.readInt(), streamReader.readInt(), streamReader.readShort(),
-        streamReader.readInt());
+    int time = streamReader.readInt();
+    int machine = streamReader.readInt();
+    Short inc = streamReader.readShort();
+    int counter = streamReader.readInt();
+
+    try{ 
+      return new ObjectId( time, machine, inc.shortValue(), counter );
+    }catch(Exception e){
+      e.printStackTrace();
+      return ObjectId.createFromLegacyFormat(time, machine, inc);
+    }
   }
 
   /**
@@ -39,7 +50,7 @@ public class ObjectId_CustomFieldSerializer {
 
     streamWriter.writeInt(instance.getTimestamp());
     streamWriter.writeInt(instance.getMachineIdentifier());
-//    streamWriter.writeInt(instance.getProcessIdentifier());
+    streamWriter.writeShort(instance.getProcessIdentifier());
     streamWriter.writeInt(instance.getCounter());
   }
 }
